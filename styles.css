@@ -1,0 +1,235 @@
+/* Importación de la fuente Quicksand desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;700&display=swap');
+
+/* Estilos generales del cuerpo de la página */
+body {
+    font-family: 'Quicksand', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Estilos del encabezado */
+header {
+    text-align: center;
+    padding: 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+/* Estilos de la barra de navegación */
+nav {
+    background-color: #555;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Estilos de los enlaces de la barra de navegación */
+nav a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px;
+    margin: 0 10px;
+    font-size: 16px;
+}
+
+
+/* Estilos de la galería de imágenes */
+#gallery {
+    padding-bottom: 3em;
+    padding-top: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+    /*Establece los márgenes internos (padding) para el contenedor de la galería, proporcionando espacio alrededor de su contenido.*/
+    display: grid;
+    /*Indica que el contenedor de la galería utilizará el sistema de diseño de cuadrícula de CSS.*/
+    grid-template-columns: repeat(4, 1fr);
+    /*Define las columnas de la cuadrícula, estableciendo que habrá 4 columnas con un ancho igual (1fr) cada una.*/
+    grid-auto-rows: 160px;
+    /*Establece la altura predeterminada de las filas de la cuadrícula en 160 píxeles. Las filas pueden ajustarse automáticamente según el contenido.*/
+    grid-template-areas: 
+        "img1 img1 img2 img3"
+        "img1 img1 img4 img4"
+        "img5 img5 img6 img7";
+        /*Define áreas específicas de la cuadrícula para cada imagen. Cada línea de la cadena representa una fila, y las áreas de las imágenes se especifican para cada columna.*/
+    gap: .8em;
+    /*Establece el espacio entre las celdas de la cuadrícula, tanto horizontal como verticalmente. En este caso, se utiliza un espacio de 0.8em.*/
+}
+img{
+    width: 100%;
+    height: 100%;
+}
+/* Estilos específicos para cada imagen en la galería */
+.img1 { grid-area: img1; }
+.img2 { grid-area: img2; }
+.img3 { grid-area: img3; }
+.img4 { grid-area: img4; }
+.img5 { grid-area: img5; }
+.img6 { grid-area: img6; }
+.img7 { grid-area: img7; }
+
+/* Estilos generales para las fotos en la galería */
+.photo {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+/* Estilos del efecto visual antes de la imagen en la galería */
+.photo::before {
+    content: "Hola";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background-color: #d028e7;
+    transform: scale(0);
+    transition: transform .4s;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+/* Estilos al pasar el ratón sobre las fotos en la galería */
+.photo:hover::before {
+    transform: scale(1.1);
+}
+
+
+/* Estilos del lightbox (vista ampliada) */
+#lightbox {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Estilos de la imagen dentro del lightbox */
+#lightbox img {
+    width: 80%;
+    height: auto;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.8);
+}
+
+/* Estilos del botón para cerrar el lightbox */
+#closeBtn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Estilos del pie de página */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-top: auto;
+}
+
+/* Establecer estilos específicos para dispositivos móviles (ancho máximo de 600px) */
+@media only screen and (max-width: 600px) {
+/*@media: Indica que se está utilizando una regla de medios en CSS.
+- only screen: Limita la regla de medios a dispositivos de tipo pantalla (como monitores, tabletas y teléfonos), excluyendo, por ejemplo, impresoras.
+- and: Combina varias condiciones.
+(max-width: 600px): Establece la condición específica de ancho máximo de la pantalla. En este caso, los estilos se aplicarán si el ancho de la pantalla es de 600 píxeles o menos.*/
+    #gallery {
+        grid-template-columns: 1fr; /* Una columna completa para dispositivos móviles */
+        grid-template-areas:
+            "img1"
+            "img2"
+            "img3"
+            "img4"
+            "img5"
+            "img6"
+            "img7";
+    }
+}
+
+
+
+/* Estilos menú responsive */
+
+nav {
+    background-color: #333; /* Establece el color de fondo de la barra de navegación */
+    text-align: center;
+}
+
+
+
+/* Estilos para el icono del menú (hamburguesa) */
+.menu-icon {
+    display: none; /* Oculta el icono del menú por defecto */
+}
+
+/* Estilos para la lista no ordenada */
+ul {
+    list-style-type: none; /* Elimina los puntos de la lista */
+    margin: 0; /* Elimina el margen externo de la lista */
+    padding: 0; /* Elimina el relleno interno de la lista */
+    overflow: hidden; /* Evita que el contenido se desborde fuera de la lista */
+    display: inline-block;
+}
+
+/* Estilos para los elementos de la lista */
+li {
+    float: left; /* Hace que los elementos de la lista floten hacia la izquierda */
+}
+
+/* Estilos para los enlaces dentro de los elementos de la lista */
+li a {
+    display: block; /* Convierte los enlaces en bloques para que ocupen todo el ancho del contenedor */
+    color: white; /* Establece el color del texto */
+    text-align: center; /* Centra el texto horizontalmente */
+    padding: 14px 16px; /* Añade relleno alrededor del texto */
+    text-decoration: none; /* Elimina el subrayado predeterminado de los enlaces */
+}
+
+/* Estilos al pasar el ratón sobre los enlaces */
+li a:hover {
+    background-color: #111; /* Cambia el color de fondo cuando se pasa el ratón sobre los enlaces */
+}
+
+/* Estilos específicos para dispositivos con un ancho máximo de 600px (modo móvil) */
+@media only screen and (max-width: 600px) {
+    /* Estilos para el icono del menú (hamburguesa) en modo móvil */
+    .menu-icon {
+        display: block; /* Muestra el icono del menú */
+        color: rgb(234, 86, 86); /* Establece el color del icono del menú */
+        float: right; /* Hace que el icono del menú flote hacia la derecha */
+        padding: 15px; /* Añade relleno alrededor del icono del menú */
+        cursor: pointer; /* Cambia el cursor al pasar por encima del icono del menú */
+    }
+    
+    /* Estilos para el menú desplegable en modo móvil */
+    .menu {
+        display: none; /* Oculta el menú por defecto */
+        clear: both; /* Borra los flotadores para evitar problemas de diseño */
+    }
+
+    /* Estilos para mostrar el menú desplegable cuando está activo en modo móvil */
+    .menu.active {
+        display: block; /* Muestra el menú cuando está activo */
+    }
+
+    /* Restablece la propiedad 'float' de los elementos de la lista en modo móvil */
+    li {
+        float: none; /* Elimina el flotador para que los elementos de la lista se muestren verticalmente */
+    }
+}
